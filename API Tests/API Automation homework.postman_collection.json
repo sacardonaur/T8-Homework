@@ -1,0 +1,220 @@
+{
+	"info": {
+		"name": "API Automation homework",
+		"_postman_id": "4b8de1e6-c2e3-4abf-a867-65da63b2e1dc",
+		"description": "This API automation will run tests for 2 main behaviors of the APP\n\n1) Adding topics to guide\n2) Editing topics to guide",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "AddTopic",
+			"description": "",
+			"item": [
+				{
+					"name": "Add Topic",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ec0c6568-1391-423c-bdca-cdd27e4d8858",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Existing topic was succesfully added\", function(){",
+									"    var jsonData = pm.response.json();",
+									"    ",
+									"    jsonData.forEach(function(obj) { ",
+									"    if(obj.topic.name === \"Existing Topic\"){",
+									"        pm.environment.set('topicID', obj.topic.id);",
+									"        pm.expect(obj.expertise).to.equal(\"intermediate\");",
+									"        pm.expect(obj.topic.description).to.equal(\"Existing topic description\")",
+									"    }",
+									"    });",
+									"});",
+									"",
+									"pm.test(\"Existing topic was succesfully deleted again\", function(){",
+									"    var topicId = pm.environment.get('topicID');",
+									"    var luisId = pm.environment.get('luis-id');",
+									"    pm.sendRequest({url:'https://backend-copy.herokuapp.com/collaborators/'+luisId+'/topicsToTeach/'+topicId,",
+									"        method: 'DELETE',",
+									"        function (err, res) {",
+									"            pm.expect(err).to.not.be.ok;",
+									"            pm.expect(res).to.have.property('code', 200);",
+									"            pm.expect(res).to.have.property('status', 'OK');",
+									"        }",
+									"    });",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n        \"topic\": {\n            \"name\": \"Existing Topic\",\n            \"description\": \"Existing topic description\",\n            \"teachers\": 1,\n            \"students\": 0,\n            \"createdAt\": \"2-4-2018 1:41:50\"\n        },\n        \"expertise\": \"1\"\n    }"
+						},
+						"url": {
+							"raw": "https://backend-copy.herokuapp.com/collaborators/{{luis-id}}/topicsToTeach/",
+							"protocol": "https",
+							"host": [
+								"backend-copy",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"collaborators",
+								"{{luis-id}}",
+								"topicsToTeach",
+								""
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Edit Topic",
+			"description": "",
+			"item": [
+				{
+					"name": "Edit Python expertise to intermediate",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5800c338-0baf-47a5-b134-c230318a4d71",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Python topic was updated\", function(){",
+									"    var jsonData = pm.response.json();",
+									"    jsonData.forEach(function(obj) { ",
+									"    if(obj.topic.name === \"Python\"){",
+									"        pm.expect(obj.expertise).to.equal(\"intermediate\");",
+									"        ",
+									"        }",
+									"    });",
+									"});",
+									"",
+									"",
+									"",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n        \"topic\": {\n            \"id\": \"5ac18a5eb37a8000044129fc\",\n            \"name\": \"Python\",\n            \"description\": \"Data Science in Python\",\n            \"teachers\": 1,\n            \"students\": 0,\n            \"createdAt\": \"2-4-2018 1:41:50\"\n        },\n        \"expertise\": \"1\"\n    }"
+						},
+						"url": {
+							"raw": "https://backend-copy.herokuapp.com/collaborators/{{luis-id}}/topicsToTeach/",
+							"protocol": "https",
+							"host": [
+								"backend-copy",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"collaborators",
+								"{{luis-id}}",
+								"topicsToTeach",
+								""
+							]
+						},
+						"description": "Take a topic that's already present on a collaborator and change the expertice level"
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Python expertise to expert",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3be77265-d074-4c47-bf6e-49762ec4705d",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Python topic was updated\", function(){",
+									"    var jsonData = pm.response.json();",
+									"    for (i = 0; i < jsonData.lenght; i++){",
+									"        ",
+									"    }",
+									"    jsonData.forEach(function(obj) { ",
+									"    if(obj.topic.name === \"Python\"){",
+									"        pm.expect(obj.expertise).to.equal(\"expert\");",
+									"    }",
+									"    });",
+									"});",
+									"",
+									"",
+									"",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n        \"topic\": {\n            \"id\": \"5ac18a5eb37a8000044129fc\",\n            \"name\": \"Python\",\n            \"description\": \"Data Science in Python\",\n            \"teachers\": 1,\n            \"students\": 0,\n            \"createdAt\": \"2-4-2018 1:41:50\"\n        },\n        \"expertise\": \"2\"\n    }"
+						},
+						"url": {
+							"raw": "https://backend-copy.herokuapp.com/collaborators/{{luis-id}}/topicsToTeach/",
+							"protocol": "https",
+							"host": [
+								"backend-copy",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"collaborators",
+								"{{luis-id}}",
+								"topicsToTeach",
+								""
+							]
+						},
+						"description": "Take a topic that's already present on a collaborator and change the expertice level"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
