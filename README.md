@@ -17,8 +17,8 @@ For UI automation, I used protractor with Gherkin. And was basically a nightmare
 
 For running the project, you just have to go to the UI Tests directory and execute an **nmp install**, have protractor globally installed in your machine and then execute **protractor protractorConfig.js**.
 
-![alt text](https://github.com/sacardonaur/T8-Homework/edit/master/images/nmpinstall.png)
-![alt text](https://github.com/sacardonaur/T8-Homework/edit/master/images/protractorconfig.png)
+![alt text](https://github.com/sacardonaur/T8-Homework/edit/master/images/nmpinstall.PNG)
+![alt text](https://github.com/sacardonaur/T8-Homework/edit/master/images/protractorconfig.PNG)
 
 
 The tests are running against the app in heroku without a problem. Here there is a video showing a perfect run of the tests https://youtu.be/qwjksQKvMkw
@@ -27,12 +27,12 @@ The tests are running against the app in heroku without a problem. Here there is
 
 For API automation, I used postman. Created the API tests for the same 2 behaviors and exported them on a json file. In order to run them, you just have to open Postman, import the file and run it. As well as with the UI automation, it's running against the heroku deployed App
 
-![alt text](https://github.com/sacardonaur/T8-Homework/edit/master/images/import.png)
-![alt text](https://github.com/sacardonaur/T8-Homework/edit/master/images/run.png)
-![alt text](https://github.com/sacardonaur/T8-Homework/edit/master/images/result.png)
+![alt text](https://github.com/sacardonaur/T8-Homework/edit/master/images/import.PNG)
+![alt text](https://github.com/sacardonaur/T8-Homework/edit/master/images/run.PNG)
+![alt text](https://github.com/sacardonaur/T8-Homework/blob/master/images/result.PNG)
 
 Also, i forgot to tell you that i used some environment variables, which are the following:
-![alt text](https://github.com/sacardonaur/T8-Homework/edit/master/images/environment-variables.png)
+![alt text](https://github.com/sacardonaur/T8-Homework/edit/master/images/environment-variables.PNG)
 
 
 
