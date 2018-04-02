@@ -27,5 +27,15 @@ The tests are running against the app in heroku without a problem. Here there is
 
 For API automation, I used postman. Created the API tests for the same 2 behaviors and exported them on a json file. In order to run them, you just have to open Postman, import the file and run it. As well as with the UI automation, it's running against the heroku deployed App
 
+![alt text](https://github.com/sacardonaur/T8-Homework/edit/master/images/import.png)
+![alt text](https://github.com/sacardonaur/T8-Homework/edit/master/images/run.png)
+![alt text](https://github.com/sacardonaur/T8-Homework/edit/master/images/result.png)
+
+Also, i forgot to tell you that i used some environment variables, which are the following:
+![alt text](https://github.com/sacardonaur/T8-Homework/edit/master/images/environment-variables.png)
+
+
+
+
 
 
