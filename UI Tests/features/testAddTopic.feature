@@ -1,4 +1,5 @@
-Feature: Creating a new todo task
+Feature: Adding a topic to my topics to guide
+
   As a collaborator with multiple topics to guide
   I'd like to add new topics
   So that I can share that information with other users
